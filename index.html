@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Frame - Photo Border Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.js"></script>
+    <script src="https://unpkg.com/@alexcorvi/heic2any@2.0.0/dist/heic2any.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Square Frame</h1>
+            <p>Add white borders and make your photos square while preserving resolution</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17,8 12,3 7,8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <h3>Drop your photo here or click to browse</h3>
+                        <p>Supports JPEG, PNG, WebP, and HEIC formats</p>
+                    </div>
+                    <input type="file" id="fileInput" accept="image/*,.heic,.HEIC" hidden>
+                </div>
+            </div>
+
+            <div class="processing-section" id="processingSection" style="display: none;">
+                <div class="image-preview">
+                    <div class="preview-container">
+                        <h3>Original Image</h3>
+                        <img id="originalImage" alt="Original">
+                        <div class="image-info" id="originalInfo"></div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="preview-container">
+                        <h3>Processed Image</h3>
+                        <canvas id="processedCanvas"></canvas>
+                        <div class="image-info" id="processedInfo"></div>
+                    </div>
+                </div>
+
+                <div class="settings">
+                    <div class="setting-group">
+                        <label for="borderWidth">Border Width (% of max dimension):</label>
+                        <input type="number" id="borderWidth" min="0" max="20" step="0.1" value="2.5">
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button id="processBtn" class="btn btn-primary">Process Image</button>
+                    <button id="downloadBtn" class="btn btn-secondary" style="display: none;">Download Processed Image</button>
+                    <button id="resetBtn" class="btn btn-outline">Upload New Image</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
